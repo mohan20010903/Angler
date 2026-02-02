@@ -1,0 +1,146 @@
+﻿@model IEnumerable<ContactDTO>
+<div>
+	<div class="row mb-1">
+		<div class="col-2">
+			<span>Name</span>
+		</div>
+		<div class="col-1">
+			<span>:</span>
+		</div>
+		<div class="col-9">
+			<input type="text" id="txt_name" placeholder="Enter"/>
+		</div>
+	</div>
+	<div class="row mb-1">
+		<div class="col-2">
+			<span>Gender</span>
+		</div>
+		<div class="col-1">
+			<span>:</span>
+		</div>
+		<div class="col-9">
+			<input type="radio" id="rdo_male" name="genderOptions" value="0"/>
+			<label for="rdo_male">Male</label>
+			<input type="radio" id="rdo_female" name="genderOptions" value="1"/>
+			<label for="rdo_female">Female</label>
+		</div>
+	</div>
+	<div class="row mb-1">
+		<div class="col-2">
+			<span>Email</span>
+		</div>
+		<div class="col-1">
+			<span>:</span>
+		</div>
+		<div class="col-9">
+			<input type="text" id="txt_email" placeholder="Enter" />
+		</div>
+	</div>
+	<div class="row mb-1">
+		<div class="col-2">
+			<span>Address</span>
+		</div>
+		<div class="col-1">
+			<span>:</span>
+		</div>
+		<div class="col-9">
+			<textarea id="txt_address" placeholder="Enter"></textarea>
+		</div>
+	</div>
+	<div class="row mb-1">
+		<div class="col-2">
+			<span>State</span>
+		</div>
+		<div class="col-1">
+			<span>:</span>
+		</div>
+		<div class="col-9">
+			<input type="text" id="txt_state" placeholder="Enter" />
+		</div>
+	</div>
+	<div class="row mb-1">
+		<div class="col-2">
+			<span>Zip</span>
+		</div>
+		<div class="col-1">
+			<span>:</span>
+		</div>
+		<div class="col-9">
+			<input type="text" id="txt_zip" placeholder="Enter" />
+		</div>
+	</div>
+	<div class="row mb-1">
+		<div class="col-2">
+			<span>Country</span>
+		</div>
+		<div class="col-1">
+			<span>:</span>
+		</div>
+		<div class="col-9">
+			<select id="drp_select">
+				<option>--Select--</option>
+				<option>India</option>
+				<option>USA</option>
+			</select>
+		</div>
+	</div>
+	<div class="row mb-1">
+		<div class="col-2">
+			<span>Phone</span>
+		</div>
+		<div class="col-1">
+			<span>:</span>
+		</div>
+		<div class="col-9">
+			<input type="text" id="txt_phone" placeholder="Enter" />
+		</div>
+	</div>
+	<div class="row mb-5">
+		<div class="col-4 d-flex justify-content-evenly">
+			<input id="hid_ContactId_1" type="hidden" />
+			<button class="btn btn-success" id="btn_save" type="button">Submit</button>
+			<button class="btn btn-success" id="btn_update" type="button" style="display:none">Update</button>
+			<button class="btn btn-danger" id="btn_clear" type="button" onclick="location.reload()">Clear</button>
+		</div>
+	</div>
+</div>
+
+<div>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Gender</th>
+				<th>Email</th>
+				<th>Address</th>
+				<th>State</th>
+				<th>Zip</th>
+				<th>Country</th>
+				<th>Phone</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var contact in Model)
+			{
+				<tr>
+					<td>@contact.Name</td>
+					<td>@contact.Gender</td>
+					<td>@contact.Email</td>
+					<td>@contact.Address</td>
+					<td>@contact.State</td>
+					<td>@contact.Zip</td>
+					<td>@contact.Country</td>
+					<td>@contact.Phone</td>
+					<td>
+						<button type="button" class="btn btn-primary update">Update</button>
+						<button type="button" class="btn btn-danger delete">Delete</button>
+						<input id="hid_ContactId" type="hidden" value="@contact.ContactId" />
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/Contact-Manager.js"></script>
